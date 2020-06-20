@@ -12,7 +12,7 @@ module.exports = {
         res.render('feedback/index', { feedback });
     },
     getForm(req, res) {
-        res.render('feedback / new ', { date: moment().format('YYY - MM - DDTHH: mm') });
+        res.render('feedback / submission');
     },
     async create(req, res) {
         try {
