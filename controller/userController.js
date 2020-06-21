@@ -17,7 +17,7 @@ module.exports = {
             res.redirect('/users');
         } catch (err) {
             console.log('error', err);
-            httpResponseFormatter.formatErrorResponse(res, err);
+            httpResponseFormatter.formatErrorResponse(res, err)
         }
     }
 };

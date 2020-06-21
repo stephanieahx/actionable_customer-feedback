@@ -16,5 +16,5 @@ module.exports = app => {
     app.get('/feedback/:index', feedbackController.show);
     app.get('/feedback/submit', feedbackController.getForm);
     app.post('/feedback', feedbackController.create);
-    app.get('feedback/1/update', feedbackController.update);
+    app.put('feedback/:index', feedbackController.update);
 }

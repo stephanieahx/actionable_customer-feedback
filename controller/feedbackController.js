@@ -21,18 +21,25 @@ module.exports = {
     async show(req, res) {
         const index = req.params.index;
         const feedback = await feedbackRepository.getAll();
-        const selectedFeedback = feedback[index].feedback;
+        const selectedFeedback = feedback[index];
+        console.log(selectedFeedback);
         return res.render('feedback/show', { selectedFeedback });
-    },
+        },
     async update(req, res) {
-        try {
-            const update = {
-                'update': req.body.update
-            };
-            await feedbackRepository.updateByIndex(req.params.index, update);
-            return res.send(update);
-        } catch (err) {
-            return res.render('error/404', { err });
-        }
+        const index = req.params.index;
+        const feedback = await feedbackRepository.getAll();
+        const selectedFeedback = feedback[index];
+        const update = {
+            'actionItem': req.body
+        };
+        // try {
+        //     const update = {
+        //         'actionItem': req.body
+        //     };
+        //     await feedbackRepository.updateByIndex(req.params.index, update);
+        //     return res.send(update);
+        // } catch (err) {
+        //     return res.render('error/404', { err });
+        // }
     }
 };
