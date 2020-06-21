@@ -1,14 +1,8 @@
 const feedbackRepository = require('../repositories/feedbackRepository');
-// const moment = require('moment');
-
-// const addFormattedDate = users => users.map(user => {
-//     if (user.date) user.FormattedDate = moment(user.date).format('ddd, MMMM Do YYYY, h:mm:ss a');
-// });
 
 module.exports = {
     async getAll(req, res) {
         const feedback = await feedbackRepository.getAll();
-        // addFormattedDate(feedback);
         res.render('feedback/index', { feedback });
     },
     getForm(req, res) {
@@ -22,6 +16,23 @@ module.exports = {
         } catch (err) {
             console.log('error', err);
             httpResponseFormatter.formatErrorResponse(res, err);
+        }
+    },
+    async show(req, res) {
+        const index = req.params.index;
+        const feedback = await feedbackRepository.getAll();
+        const selectedFeedback = feedback[index].feedback;
+        return res.render('feedback/show', { selectedFeedback });
+    },
+    async update(req, res) {
+        try {
+            const update = {
+                'update': req.body.update
+            };
+            await feedbackRepository.updateByIndex(req.params.index, update);
+            return res.send(update);
+        } catch (err) {
+            return res.render('error/404', { err });
         }
     }
 };

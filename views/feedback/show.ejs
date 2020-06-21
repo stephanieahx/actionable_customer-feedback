@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-body">
+            "
+            <h5 class="card-title"><%= selectedFeedback %></h5>
+            "
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">(Update 1 )</li>
+            <li class="list-group-item">(update 2)</li>
+            <li class="list-group-item">(update 3)</li>
+        </ul>
+        <div class="card-body">
+            <form action='/feedback/:index' method='put' id='update-form'>
+                <div class='container py-5'>
+                    <div class='form-group action'>
+                        <label for='name-input'>Action Item</label>
+                        <textarea type='text' class='form-control' id='action-input' name='action' placeholder='What follow up steps do we need to take?'></textarea>
+                    </div>
+                    <button type='submit' class='btn btn-primary'>Submit</button>
+            </form>
+        </div>
+        <a href='' class='btn btn-secondary'>Completed</a>
+    </div>
+</body>
+
+</html>
