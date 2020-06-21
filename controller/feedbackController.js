@@ -12,12 +12,13 @@ module.exports = {
         res.render('feedback/index', { feedback });
     },
     getForm(req, res) {
-        res.render('feedback / submission');
+        res.render('feedback/submission');
     },
     async create(req, res) {
         try {
             const feedback = await feedbackRepository.create(req.body);
             httpResponseFormatter.formatOkResponse(req, user);
+            res.redirect('/');
         } catch (err) {
             console.log('error', err);
             httpResponseFormatter.formatErrorResponse(res, err);

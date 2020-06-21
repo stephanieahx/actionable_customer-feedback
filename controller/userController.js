@@ -7,7 +7,7 @@ module.exports = {
         res.render('users/index', { users });
     },
     getForm(req, res) {
-        res.render('users/registration ');
+        res.render('users/registration');
     },
     async create(req, res) {
         try {
