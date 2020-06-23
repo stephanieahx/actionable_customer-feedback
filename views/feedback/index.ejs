@@ -7,15 +7,13 @@
 
 <body>
     <h1>AF Backlog</h1>
-    <h3>Every item of feedback is an actionable item to improve our processes.</h3>
-    <h3>Review our customers' feedback:</h3>
     <div class="d-inline-flex p-2 bd-highlight">
         <% feedback.forEach((feedback, index) => { %>
         <div class="card mx-2" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">"<%= feedback.feedback %>"</h5>
-                <p class="card-text">(to input date)</p>
-                <a href="feedback/<%= index %>" class="btn btn-primary">Review</a>
+                <!-- <a href="feedback/<%= feedback.name %>" class="btn btn-primary">Review</a> -->
+                <a href="/feedback/<%= index %>" class="btn btn-primary">Review</a>
             </div>
         </div>
         <% }) %>

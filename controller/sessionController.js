@@ -2,7 +2,7 @@ const userRepository = require('../repositories/userRepository');
 const bcrypt = require('bcrypt');
 
 module.exports = {
-    async create (req, res) {
+    async create(req, res) {
         const foundUser = await userRepository.find(req.body.name);
         if (bcrypt.compareSync(req.body.password, foundUser.password)) {
             req.session.currentUser = foundUser;
@@ -12,11 +12,15 @@ module.exports = {
         }
     },
 
-    newForm (req, res) {
-        return res.render('users/register'); //should sessions/new.ejs be created for this instead?
-    }, 
+    async home(req, res) {
+        return res.render('index');
+    },
 
-    destroy (req,res) {
+    newForm(req, res) {
+        return res.render('users/register'); //should sessions/new.ejs be created for this instead?
+    },
+
+    destroy(req, res) {
         return req.session.destory(() => {
             res.redirect('/');
         });
