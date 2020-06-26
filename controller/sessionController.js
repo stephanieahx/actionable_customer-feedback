@@ -1,5 +1,7 @@
 const userRepository = require('../repositories/userRepository');
 const bcrypt = require('bcrypt');
+const express = require('express');
+// const sessions = express.Router();
 
 module.exports = {
     async create(req, res) {
@@ -17,7 +19,7 @@ module.exports = {
     },
 
     newForm(req, res) {
-        return res.render('users/register'); //should sessions/new.ejs be created for this instead?
+        return res.render('users/register'); 
     },
 
     destroy(req, res) {

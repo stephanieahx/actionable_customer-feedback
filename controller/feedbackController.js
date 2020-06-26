@@ -33,8 +33,9 @@ module.exports = {
     async update(req, res) {
         try {
             const updatedData = req.body.actionItem;
+            const index = req.body.index
             await feedbackRepository.update(req.params.id, updatedData);
-            res.redirect('/feedback')
+            res.redirect('/feedback/') // TO MAKE IT GO BACK TO THE SAME FEEDBACK INDEX PAGE
         } catch (err) {
             console.log('error', err);
         }
