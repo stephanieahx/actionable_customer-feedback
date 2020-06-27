@@ -25,7 +25,6 @@ module.exports = {
     },
     async delete(req, res) {
         try {
-            console.log('hello request', req.params)
             const id = await userRepository.delete(req.params.id);
             res.redirect('/users');
         } catch (err) {
@@ -38,7 +37,7 @@ module.exports = {
             const adminStatus= req.body.admin;
             const id = req.params.id;
             console.log(req);
-            await userRepository.update(id, adminStatus);
+            await userRepository.setAdmin(id, adminStatus);
             res.redirect('/users');
         } catch (err) {
             console.log('error', err);

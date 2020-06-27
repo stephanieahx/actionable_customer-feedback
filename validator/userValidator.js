@@ -18,6 +18,7 @@ module.exports = {
             // Add default values for createdAt and updatedAt
             data.createdAt = data.createdAt ? new Date(data.createdAt) : new Date();
             data.updatedAt = data.updatedAt ? new Date(data.updatedAt) : new Date();
+            data.admin = "false";
             return isValid;
         }
 };

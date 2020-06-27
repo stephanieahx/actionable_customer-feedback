@@ -2,7 +2,8 @@ const feedbackRepository = require('../repositories/feedbackRepository');
 const sessionController = require('./sessionController')
 const db = require('../db');
 const fetch = require('node-fetch');
-const TYPEFORM_TOKEN = process.env.TYPEFORM_TOKEN;
+const url = "https://api.typeform.com/forms/skNk5r/responses";
+const accessKey = process.env.ACCESS_KEY || "ZWin8QmYEu5T65X6dTmm66uN1U8EwUCprkYrKXFBi4g";
 
 module.exports = {
     async getAll(req, res) {
@@ -59,13 +60,14 @@ module.exports = {
 
     async refreshFeedback(req, res) {
         const existingFeedback = await feedbackRepository.getAll();
-        const newFeedback = await fetch('https://api.typeform.com/forms/skNk5r/responses');
-        //compare existing with new and add only new feedback [ ]
-    //     for (let index = 0; index++; index < newFeedbacklength) {
-    //         if (newFeedback(index).response === existingFeedback[i])
-    //     }
-    // }
-    //save to database
-},
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${accessKey}`
+            }
+        })
+        const newFeedback = response.json();
+        console.log('newFeedback', newFeedback);
+    },
 
 };

@@ -30,10 +30,7 @@ module.exports = {
             { "_id": ObjectId(id) });
     },
 
-    update(id, adminStatus) {
-        console.log(id);
-        console.log('admin below');
-        console.log(adminStatus)
+    setAdmin(id, adminStatus) {
         return db.users.update(
             { "_id": ObjectId(id) },
             { $set: { admin: adminStatus } }

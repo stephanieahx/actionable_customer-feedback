@@ -24,22 +24,17 @@
                 <td><%= users.name %></td>
                 <td><%= users.department %></td>
 
-                <% if (currentUser && currentUser.admin) { %>
+                <% if (currentUser && currentUser.admin === "true") { %>
                 <td><%= users.admin %></td>
 
-                <td>
-                    <form action="/users/<%= users._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn waves-effect red lighten-2">DELETE</button>
-                    </form>
-                </td>
-                <% if(users.admin) { %>
+                <% if(users.admin === "true") { %>
                 <td>
                     <form action="/users/<%= users._id %>?_method=PUT" method="POST">
                         <input type=hidden value=false name='admin'>
                         <button type="submit" class="btn waves-effect deep orange">REMOVE AS ADMIN</button>
                     </form>
                 </td>
-                <% } else if (!users.admin) {%>
+                <% } else if(users.admin === "false") { %>
                 <td>
                     <form action="/users/<%= users._id %>?_method=PUT" method="POST">
                         <input type='hidden' value=true name='admin'>
@@ -47,6 +42,12 @@
                     </form>
                 </td>
                 <% } %>
+                <td>
+                    <form action="/users/<%= users._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn waves-effect red lighten-2">DELETE</button>
+                    </form>
+                </td>
+
                 <% } %>
             </tr>
             <%}) %>

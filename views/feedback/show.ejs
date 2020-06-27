@@ -26,11 +26,13 @@
                             placeholder='What follow up steps do we need to take?'></textarea>
                             <input type='hidden' value=<%= index %> name='index'>
                         </div>
-                            <button type='submit' class="btn-floating btn-large waves-effect waves-light green">+</button>
+                            <button type='submit' class="btn-floating btn-large waves-effect waves-light green">
+                                <i class="material-icons">add</i>
+                            </button>
             </form>
        
         </div>
-        <% if(currentUser && currentUser.admin) { %>
+          <%  if (currentUser && currentUser.admin === "true")   { %> 
         <form action="/feedback/<%= selectedFeedback._id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn-large waves-effect waves-light red" class='delete-button'>COMPLETED</button>
         </form>

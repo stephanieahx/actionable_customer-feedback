@@ -16,6 +16,9 @@ module.exports = {
         updatedAt: {
             type: 'string', 
             format: 'date-time'
+        },
+        admin: {
+            type: 'boolean'
         }
     }
 };
