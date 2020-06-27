@@ -9,7 +9,7 @@ module.exports = {
         try {
             validate(req.body);
             await userRepository.create(req.body);
-            res.redirect('/users');
+            res.redirect('/');
         } catch (err) {
             res.render('errors/404', { err });
         }

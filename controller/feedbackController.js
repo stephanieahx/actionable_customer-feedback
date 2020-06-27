@@ -1,4 +1,5 @@
 const feedbackRepository = require('../repositories/feedbackRepository');
+const sessionController = require('./sessionController')
 const db = require('../db');
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
         const feedback = await feedbackRepository.getAll();
         res.render('feedback/index', { feedback });
     },
-    
+
     async getForm(req, res) {
         res.render('feedback/submission');
     },
@@ -27,7 +28,10 @@ module.exports = {
         const feedback = await feedbackRepository.getAll();
         const selectedFeedback = feedback[index];
         console.log(selectedFeedback);
-        return res.render('feedback/show', { selectedFeedback });
+        return res.render('feedback/show', {
+            selectedFeedback: selectedFeedback,
+            currentUser: req.session.currentUser
+        });
     },
 
     async update(req, res) {

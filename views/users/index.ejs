@@ -15,7 +15,6 @@
                 <th scope='col'>Position</th>
                 <% if (currentUser.admin) { %>
                 <th scope='col'>Administrator</th>
-                <th scope='col'></th>
                 <% } %>
             </tr>
         </thead>
@@ -30,7 +29,8 @@
                 <td><%= users.admin %></td>
                 <td>
                     <form action="/users/<%= users._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-warning" class='delete-button'>REMOVE</button>
+                        <button type="submit" class="btn waves-effect waves-red
+                        " class='delete-button'>REMOVE</button>
                     </form>
                 </td>
                 <% } %>

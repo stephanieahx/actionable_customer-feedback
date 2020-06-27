@@ -10,34 +10,40 @@
   <body>
     <div class="container">
 
-      <h1>
-        <% if (currentUser) { %>
-          <% console.log(currentUser) %>
-        <italics>Welcome <%= currentUser.name %> </italics>
 
-        <% if(currentUser.admin) { %>
+      <% if (currentUser) { %>
+      <% console.log(currentUser) %>
+      <h1>Welcome <%= currentUser.name %> </h1>
 
-        <h3>Administrator Functions</h3>
-          <a class="waves-effect waves-light btn" href="/users">Manage Users</a>
-        <%  } %>
-        <h2>
-          <a class="waves-effect waves-light btn" href="/feedback">Review Customer Feedback</a>
-        </h2>
-        <h2>
-          <a class="waves-effect waves-light btn" href="/feedback/submit">Input Customer Feedback</a>
-        </h2>
-      </h1>
+      <h2>
+        <a class="waves-effect waves-light btn" href="/feedback/submit">Input Customer Feedback</a>
+      </h2>
 
-      <form action="/sessions?_method=DELETE" method="post">
-        <input type="submit" name="" value="Logout" class="waves-effect waves-light btn">
-      </form>
+      <h2>
+        <a class="waves-effect waves-light btn" href="/feedback">Review Customer Feedback</a>
+      </h2>
 
-      <% } else { %>
-      <h2>Please</h2>
-      <a href="/register" class="waves-effect waves-light btn">Register</a>
-      <h3>or</h3>
-      <a href="sessions/new" class="waves-effect waves-light btn">Log In</a>
-      <% } %>
+      <h2>
+        <a class="waves-effect waves-light btn" href="/users">View Colleagues</a>
+      </h2>
+      
+      <% if(currentUser.admin) { %>
+
+      <h3>Administrator Functions</h3>
+      <a href="/users">Manage Users</a>
+      <%  } %>
+      <h2>
+
+        <form action="/sessions?_method=DELETE" method="post">
+          <input type="submit" name="" value="Logout" class="waves-effect waves-light btn">
+        </form>
+
+        <% } else { %>
+        <h2>Please</h2>
+        <a href="/register" class="waves-effect waves-light btn">Register</a>
+        <h3>or</h3>
+        <a href="sessions/new" class="waves-effect waves-light btn">Log In</a>
+        <% } %>
 
     </div>
   </body>

@@ -27,13 +27,14 @@
                     <button type='submit' class='btn btn-primary btn-block'>Update</button>
             </form>
         </div>
-
+        <% if(currentUser.admin) { %>
         <form action="/feedback/<%= selectedFeedback._id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-warning" class='delete-button'>COMPLETED</button>
         </form>
+        <% } %>
     </div>
 
-<a href='/feedback' class='btn btn-secondary'>View All</a>
+    <a href='/feedback' class='btn btn-secondary'>View All</a>
 </body>
 
 </html>

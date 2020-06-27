@@ -26,6 +26,6 @@ module.exports = {
 
     delete(id) {
         return db.users.deleteOne(
-            { "_id": ObjectId(id) });
+            { "_id": id });
     },
 };

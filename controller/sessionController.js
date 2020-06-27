@@ -20,7 +20,8 @@ module.exports = {
                 throw new Error();
             }
         } catch (err) {
-            return res.send('<a href="/">Login credentials do not match records. Return.</a>')
+            return res.send('<a href="/">Login credentials do not match records. Return.</a>');
+            // return res.render('errors/BSIDFAOJNFA', { err });
         }
     },
 
