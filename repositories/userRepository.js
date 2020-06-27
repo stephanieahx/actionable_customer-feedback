@@ -1,6 +1,7 @@
 const db = require('../db');
 const bcrypt = require('bcrypt')
 const SALT_ROUND = process.env.SALT_ROUND || 10; //storing as environment variable
+const { ObjectId } = require('mongodb');
 
 module.exports = {
     //2 methods to collect (create) and retrieve (find) user records 
@@ -26,6 +27,6 @@ module.exports = {
 
     delete(id) {
         return db.users.deleteOne(
-            { "_id": id });
+            { "_id": ObjectId(id) });
     },
 };

@@ -23,10 +23,16 @@ module.exports = app => {
   app.get('/users', userController.getAll);
   app.delete('/users/:id', userController.delete);
   app.get('/feedback', feedbackController.getAll);
+  app.post('/feedback', feedbackController.create);
   app.get('/feedback/submit', feedbackController.getForm);
   app.get('/feedback/:index', feedbackController.show);
-  app.post('/feedback', feedbackController.create);
-  app.delete('/feedback/:id', feedbackController.delete);
   app.put('/feedback/:id', feedbackController.update);
+  app.delete('/feedback/:id', feedbackController.delete);
+
+//public
+
+// 
+// app.use()
+
 
 }

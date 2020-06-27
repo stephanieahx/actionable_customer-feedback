@@ -35,14 +35,12 @@
       <h2>
 
         <form action="/sessions?_method=DELETE" method="post">
-          <input type="submit" name="" value="Logout" class="waves-effect waves-light btn">
+          <input type="submit" value="Logout" class='btn btn-primary orange lighten-2'>
         </form>
 
         <% } else { %>
-        <h2>Please</h2>
-        <a href="/register" class="waves-effect waves-light btn">Register</a>
-        <h3>or</h3>
-        <a href="sessions/new" class="waves-effect waves-light btn">Log In</a>
+          <h1>Hello, please</h1>
+        <a href="/register" class="waves-effect waves-light btn">Register</a> or <a href="sessions/new" class="waves-effect waves-light btn">Log In</a>
         <% } %>
 
     </div>

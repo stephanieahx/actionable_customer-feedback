@@ -30,16 +30,18 @@ module.exports = {
         console.log(selectedFeedback);
         return res.render('feedback/show', {
             selectedFeedback: selectedFeedback,
-            currentUser: req.session.currentUser
+            currentUser: req.session.currentUser,
+            index: index
         });
     },
 
     async update(req, res) {
         try {
             const updatedData = req.body.actionItem;
-            const index = req.body.index
+            console.log("request body");
+            console.log(req.body);
             await feedbackRepository.update(req.params.id, updatedData);
-            res.redirect('/feedback/') // TO MAKE IT GO BACK TO THE SAME FEEDBACK INDEX PAGE
+            res.redirect('/feedback/' + req.body.index) // TO MAKE IT GO BACK TO THE SAME FEEDBACK INDEX PAGE
         } catch (err) {
             console.log('error', err);
         }

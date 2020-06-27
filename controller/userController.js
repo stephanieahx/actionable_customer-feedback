@@ -25,6 +25,7 @@ module.exports = {
     },
     async delete(req, res) {
         try {
+            console.log('hello request', req.params)
             const id = await userRepository.delete(req.params.id);
             res.redirect('/users');
         } catch (err) {
