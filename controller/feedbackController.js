@@ -1,6 +1,8 @@
 const feedbackRepository = require('../repositories/feedbackRepository');
 const sessionController = require('./sessionController')
 const db = require('../db');
+const fetch = require('node-fetch');
+const TYPEFORM_TOKEN = process.env.TYPEFORM_TOKEN;
 
 module.exports = {
     async getAll(req, res) {
@@ -38,10 +40,9 @@ module.exports = {
     async update(req, res) {
         try {
             const updatedData = req.body.actionItem;
-            console.log("request body");
-            console.log(req.body);
             await feedbackRepository.update(req.params.id, updatedData);
-            res.redirect('/feedback/' + req.body.index) // TO MAKE IT GO BACK TO THE SAME FEEDBACK INDEX PAGE
+            console.log('moo moo');
+            res.redirect('/feedback/' + req.body.index);
         } catch (err) {
             console.log('error', err);
         }
@@ -55,5 +56,16 @@ module.exports = {
             console.log('error', err);
         }
     },
+
+    async refreshFeedback(req, res) {
+        const existingFeedback = await feedbackRepository.getAll();
+        const newFeedback = await fetch('https://api.typeform.com/forms/skNk5r/responses');
+        //compare existing with new and add only new feedback [ ]
+    //     for (let index = 0; index++; index < newFeedbacklength) {
+    //         if (newFeedback(index).response === existingFeedback[i])
+    //     }
+    // }
+    //save to database
+},
 
 };

@@ -32,5 +32,18 @@ module.exports = {
             console.log('error', err);
         }
     },
+
+    async setAdmin(req, res) {
+        try {
+            const adminStatus= req.body.admin;
+            const id = req.params.id;
+            console.log(req);
+            await userRepository.update(id, adminStatus);
+            res.redirect('/users');
+        } catch (err) {
+            console.log('error', err);
+        }
+    },
+
 };
 

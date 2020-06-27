@@ -21,7 +21,9 @@ module.exports = app => {
   app.post('/register', userController.create);
 
   app.get('/users', userController.getAll);
+  app.put('/users/:id', userController.setAdmin);
   app.delete('/users/:id', userController.delete);
+
   app.get('/feedback', feedbackController.getAll);
   app.post('/feedback', feedbackController.create);
   app.get('/feedback/submit', feedbackController.getForm);

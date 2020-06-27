@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const MONGO_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-const DB_NAME = process.env.MLAB_DB || 'actionable-feedback'
+const DB_NAME = process.env.MLAB_DB || 'actionableFeedback'
 const COLLECTIONS = {
     USERS: 'users',
     FEEDBACK: 'feedback',

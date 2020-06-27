@@ -17,16 +17,18 @@
             <% })} %>
         </ul>
         <div class="card-body">
+            
             <form action='/feedback/<%= selectedFeedback._id %>?_method=PUT' method='POST' id='update-form'>
                 <div class='container py-5'>
                     <div class='form-group action'>
-                        <label for='name-input'>Action Item</label>
+                        <label for='action-input'>Action Item</label>
                         <textarea type='text' class='form-control' id='action-input' name='actionItem'
                             placeholder='What follow up steps do we need to take?'></textarea>
                             <input type='hidden' value=<%= index %> name='index'>
                         </div>
                             <button type='submit' class="btn-floating btn-large waves-effect waves-light green">+</button>
             </form>
+       
         </div>
         <% if(currentUser && currentUser.admin) { %>
         <form action="/feedback/<%= selectedFeedback._id %>?_method=DELETE" method="POST">

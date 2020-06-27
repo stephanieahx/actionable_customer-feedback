@@ -29,4 +29,14 @@ module.exports = {
         return db.users.deleteOne(
             { "_id": ObjectId(id) });
     },
+
+    update(id, adminStatus) {
+        console.log(id);
+        console.log('admin below');
+        console.log(adminStatus)
+        return db.users.update(
+            { "_id": ObjectId(id) },
+            { $set: { admin: adminStatus } }
+        )
+    },
 };

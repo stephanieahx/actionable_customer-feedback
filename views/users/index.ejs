@@ -12,7 +12,7 @@
                 <th scope='col'>#</th>
                 <th scope='col'>Name</th>
                 <th scope='col'>Department</th>
-                <% if (currentUser.admin) { %>
+                <% if (currentUser && currentUser.admin) { %>
                 <th scope='col'>Administrator</th>
                 <% } %>
             </tr>
@@ -23,21 +23,30 @@
                 <th scope='row'><%= index + 1 %></th>
                 <td><%= users.name %></td>
                 <td><%= users.department %></td>
-                <% if (currentUser.admin) { %>
+
+                <% if (currentUser && currentUser.admin) { %>
                 <td><%= users.admin %></td>
 
                 <td>
                     <form action="/users/<%= users._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn waves-effect red lighten-2">REMOVE</button>
+                        <button type="submit" class="btn waves-effect red lighten-2">DELETE</button>
                     </form>
                 </td>
-
+                <% if(users.admin) { %>
                 <td>
-                    <form action="/users/<%= users._id %>?_method=UPDATE" method="PUT">
-                        <button type="submit" class="btn waves-effect green lighten-2">MAKE ADMIN</button>
+                    <form action="/users/<%= users._id %>?_method=PUT" method="POST">
+                        <input type=hidden value=false name='admin'>
+                        <button type="submit" class="btn waves-effect deep orange">REMOVE AS ADMIN</button>
                     </form>
                 </td>
-
+                <% } else if (!users.admin) {%>
+                <td>
+                    <form action="/users/<%= users._id %>?_method=PUT" method="POST">
+                        <input type='hidden' value=true name='admin'>
+                        <button type="submit" class="btn waves-effect lime">SET AS ADMIN</button>
+                    </form>
+                </td>
+                <% } %>
                 <% } %>
             </tr>
             <%}) %>

@@ -30,6 +30,7 @@
     "moment": "^2.26.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.20",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
