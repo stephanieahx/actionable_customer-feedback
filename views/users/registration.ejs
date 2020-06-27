@@ -10,15 +10,19 @@
         <div class='container py-5'>
             <div class='form-group name'>
                 <label for='name-input'>Name</label>
-                <input type='text' class='form-control' id='name-input' name='name'>
+                <input type='text' class='validate' id='name-input' name='name'>
             </div>
             <div class='form-group department'>
-                <label for='name-input'>Department</label>
-                <input type='text' class='form-control' id='department-input' name='department'>
+                <label for='department-input'>Department</label>
+                <input type='text' class='form-control' id='department-input' name='department' required>
             </div>
             <div class='form-group position'>
-                <label for='name-input'>Position</label>
+                <label for='position-input'>Position</label>
                 <input type='text' class='form-control' id='position-input' name='position'>
+            </div>
+            <div class='form-group password'>
+                <label for='password-input'>Password</label>
+                <input type='password' class='validate' id='password-input' name='password' required>
             </div>
             <button type='submit' class='btn btn-primary'>Register</button>
             <a href='/users' class='btn btn-secondary'>Go Back</a>

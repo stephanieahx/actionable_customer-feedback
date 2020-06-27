@@ -6,7 +6,6 @@
 </head>
 
 <body>
-
     <table class="table">
         <thead>
             <tr>
@@ -14,6 +13,10 @@
                 <th scope='col'>Name</th>
                 <th scope='col'>Department</th>
                 <th scope='col'>Position</th>
+                <% if (currentUser.admin) { %>
+                <th scope='col'>Administrator</th>
+                <th scope='col'></th>
+                <% } %>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +26,14 @@
                 <td><%= users.name %></td>
                 <td><%= users.department %></td>
                 <td><%= users.position %></td>
+                <% if (currentUser.admin) { %>
+                <td><%= users.admin %></td>
+                <td>
+                    <form action="/users/<%= users._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-warning" class='delete-button'>REMOVE</button>
+                    </form>
+                </td>
+                <% } %>
             </tr>
             <%}) %>
         </tbody>

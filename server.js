@@ -1,19 +1,21 @@
 const express = require('express');
+const session = require('express-session');
 const methodOverride = require('method-override');
 const app = express();
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 const db = require('./db');
-const sessionController = require('./controller/sessionController.js')
+// const sessionController = require('./controller/sessionController.js')
 
-// app.use('/sessions', sessionController);
+//middleware
+app.use(session({
+    secret: process.env.SECRET || "applesauce",
+    resave: false,
+    saveUninitialized: false,
+}));
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-// app.use(session({
-//     secret: "applesauce",
-//     resave: false,
-//     saveUninitialized: false,
-// }));
 
 app.set('view engine', 'ejs');
 
@@ -21,4 +23,4 @@ db.connect();
 
 require('./routes')(app);
 
-app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
+app.listen(port, () => console.log(`Server started at port ${port}`));
