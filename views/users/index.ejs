@@ -12,7 +12,7 @@
                 <th scope='col'>#</th>
                 <th scope='col'>Name</th>
                 <th scope='col'>Department</th>
-                <% if (currentUser && currentUser.admin) { %>
+                <% if (currentUser && currentUser.admin === "true") { %>
                 <th scope='col'>Administrator</th>
                 <% } %>
             </tr>
