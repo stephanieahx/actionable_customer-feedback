@@ -7,17 +7,20 @@
 
 <body>
     <h1>AF Backlog</h1>
-    <div class="d-inline-flex p-2 bd-highlight">
-        <% feedback.forEach((feedback, index) => { %>
-        <div class="card mx-2" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">"<%= feedback.feedback %>"</h5>
-                <a href="/feedback/<%= index %>" class="btn btn-primary">Review</a>
+    <container style="display:flex">
+        <div class="d-inline-flex p-2 bd-highlight">
+            <% feedback.forEach((feedback, index) => { %>
+                <div class="card mx-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">"<%= feedback.feedback %>"</h5>
+                        <a href="/feedback/<%= index %>" class="btn btn-primary">Review</a>
+                    </div>
+                </div>
+                <% }) %>
             </div>
         </div>
-        <% }) %>
-    </div>
-    <a href='/' class='btn btn-primary green lighten-2'>Refresh</a>
+    </container>
+    <a href='/feedback/latest' class='btn btn-primary green lighten-2'>Fetch latest feedback from customer surveys</a>
     <a href='/' class='btn btn-primary orange lighten-2'>Return</a>
 </body>
 

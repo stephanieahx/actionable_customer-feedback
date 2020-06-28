@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+
+<body>
+    <h1>Latest Feedback from Customer Survey</h1>
+    <div class="d-inline-flex p-2 bd-highlight">
+        <% newFeedback.forEach((feedback, _id) => { %>
+        <div class="card mx-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">"<%= newFeedback.feedback %>"</h5>
+                <a href="/feedback/<%= _id %>" class="btn btn-primary">Review</a>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <a href='/feedback/latest' class='btn btn-primary green lighten-2'>Refresh</a>
+    <a href='/feedback' class='btn btn-primary orange lighten-2'>Return</a>
+</body>
+
+</html>

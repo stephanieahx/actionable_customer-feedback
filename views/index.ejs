@@ -27,7 +27,7 @@
         <a class="waves-effect waves-light btn" href="/users">View Colleagues</a>
       </h2>
       
-      <% if(currentUser.admin) { %>
+      <% if(currentUser && currentUser.admin === "true") { %>
 
       <h3>Administrator Functions</h3>
       <a href="/users">Manage Users</a>

@@ -2,8 +2,8 @@ const db = require('../db');
 const { ObjectId } = require('mongodb');
 
 module.exports = {
-    create(data) {
-        return db.feedback.insertOne(data);
+    create(submittedFeedback) {
+        return db.feedback.insertOne(submittedFeedback);
     },
     
     getAll() {
