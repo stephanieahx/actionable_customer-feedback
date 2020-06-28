@@ -8,7 +8,7 @@ const accessKey = process.env.ACCESS_KEY || "ZWin8QmYEu5T65X6dTmm66uN1U8EwUCprkY
 
 module.exports = {
     async refresh(req, res) {
-        // const existingFeedback = await feedbackRepository.getAll();
+        const existingFeedback = await feedbackRepository.getAll();
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -18,30 +18,29 @@ module.exports = {
         const surveyResponses = await response.json();
         const latestFeedback = surveyResponses.items;
         const newFeedback = [];
-        // console.log(surveyResponses);
         await latestFeedback.forEach(element => {
             const newSurveyFeedback = element.answers[5].text;
             const surveyResponseID = element.response_id;
-            if (newFeedback) {
+            if (newSurveyFeedback) {
+                const newFeedbackItem = {
+                    feedback: newSurveyFeedback,
+                    responseID: surveyResponseID
+                };
+                newFeedback.push(newFeedbackItem);
                 for (let i = 0; i++; i < existingFeedback.length) {
-                    if (surveyResponseID !== existingFeedback[i].response_id) {
-                        const newFeedback = {
-                            feedback: newSurveyFeedback,
-                            responseID: surveyResponseID
-                        };
-                        console.log(newFeedback);
-                        newFeedback.push(newFeedback);
-                        feedbackRepository.create(newFeedback);
+                    if (surveyResponseID !== existingFeedback[i].response_id || !existingFeedback[i].response_id) {
+                        feedbackRepository.create(newFeedbackItem);
                     }
                 }
             }
+            console.log(newFeedback);
         })
-        console.log(newFeedback);
         res.render('feedback/latest', { newFeedback });
     },
 
     async getAll(req, res) {
         const feedback = await feedbackRepository.getAll();
+        console.log(feedback);
         res.render('feedback/index', { feedback });
     },
 
