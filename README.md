@@ -22,12 +22,12 @@ https://actionable-customerfeedback.herokuapp.com/
 • MongoDB || mLab (Cloud hosted MongoDB)
 
 # Technologies
-• Bcrypt - function to hash passwords
-• EJS - HTML templating 
-• Express
-• Materialize - CSS framework
-• Method-override - to use HTTP verbs (e.g. PUT or DELETE) where not supported by the client.
-• Node.js
+• Bcrypt - function to hash passwords\
+• EJS - HTML templating \
+• Express\
+• Materialize - CSS framework\
+• Method-override - to use HTTP verbs (e.g. PUT or DELETE) where not supported by the client.\
+• Node.js\
 • node-fetch - A light-weight module that brings window.fetch to Node.js
 
 # Unsolved Problems
