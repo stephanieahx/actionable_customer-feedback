@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/stephanieahx/actionable_customer-feedback#readme",
   "dependencies": {
-    "ajv": "^6.12.2",
+    "ajv": "^6.12.3",
     "ajv-keywords": "^3.5.0",
     "bcrypt": "^5.0.0",
     "chai": "^4.2.0",
